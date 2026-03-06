@@ -1,0 +1,7 @@
+{$HOST} {
+    encode
+    handle_path /static/* {
+        root * /static
+        file_server
+    }
+}

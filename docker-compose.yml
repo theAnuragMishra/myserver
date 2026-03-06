@@ -9,3 +9,22 @@ services:
       - 8080
     environment:
       PG_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=${SSL_MODE}
+
+  caddy:
+    image: caddy
+    container_name: caddy
+    restart: always
+    environment:
+      - HOST={$HOST}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./static:/static
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

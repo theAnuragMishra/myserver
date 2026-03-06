@@ -14,8 +14,8 @@ services:
     image: caddy
     container_name: caddy
     restart: always
-    environment:
-      - HOST={$HOST}
+    env_file:
+      - path: ./.env
     ports:
       - "80:80"
       - "443:443"

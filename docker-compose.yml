@@ -1,0 +1,11 @@
+services:
+  server:
+    build: .
+    container_name: server
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - 8080
+    environment:
+      PG_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=${SSL_MODE}

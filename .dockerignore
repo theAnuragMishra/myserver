@@ -1,0 +1,10 @@
+Dockerfile*
+.env*
+.git
+.gitignore
+*.md
+*.sql
+.idea/
+.vscode/
+build/
+dist/

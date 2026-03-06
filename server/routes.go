@@ -30,5 +30,10 @@ func NewRouter(modules ...RouterFunc) chi.Router {
 		w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
 		http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))).ServeHTTP(w, r)
 	})
+
+	// hi
+	router.Get("/say-hi", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("hello"))
+	})
 	return router
 }

@@ -12,6 +12,7 @@ type RouterFunc func(r chi.Router)
 func NewRouter(modules ...RouterFunc) chi.Router {
 	router := chi.NewRouter()
 	router.Use(recoveryMiddleware)
+	router.Use(RateLimitMiddleware)
 	router.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   []string{"https://localhost:*", "http://localhost:*", "https://theanuragmishra.github.io"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},

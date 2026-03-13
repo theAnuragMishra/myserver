@@ -9,7 +9,9 @@ import (
 )
 
 func main() {
-	router := server.NewRouter()
+	router := server.NewRouter(
+		server.IPTrackerModule,
+	)
 	portString := os.Getenv("PORT")
 
 	srv := &http.Server{

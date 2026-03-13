@@ -88,13 +88,8 @@ var IPTrackerModule RouterFunc = func(r chi.Router) {
 
 func handleRecordVisit(w http.ResponseWriter, r *http.Request) {
 	ip := realIP(r)
-	count := globalIPStore.record(ip)
-
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]any{
-		"ip":     ip,
-		"visits": count,
-	})
+	globalIPStore.record(ip)
+	w.WriteHeader(http.StatusOK)
 }
 
 func handleGetVisits(w http.ResponseWriter, r *http.Request) {

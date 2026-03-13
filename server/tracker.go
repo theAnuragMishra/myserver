@@ -77,7 +77,7 @@ func realIP(r *http.Request) string {
 var IPTrackerModule RouterFunc = func(r chi.Router) {
 	r.Route("/tracker", func(r chi.Router) {
 		// POST /tracker/visit — record a visit from the caller's IP.
-		r.Post("/visit", handleRecordVisit)
+		r.Get("/visit", handleRecordVisit)
 		r.Group(func(r chi.Router) {
 			r.Use(adminVerificationMiddleware)
 			// GET  /tracker/visits — return all recorded IPs and their counts.

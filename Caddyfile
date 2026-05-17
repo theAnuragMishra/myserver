@@ -28,7 +28,7 @@
   }
 
   handle_path /static/* {
-    root * /static
+    root * {$STATIC_PATH}
     file_server
 
     header {
@@ -37,6 +37,6 @@
   }
 
   handle_path /api/* {
-    reverse_proxy server:8080
+    reverse_proxy {$API_URL}
   }
 }

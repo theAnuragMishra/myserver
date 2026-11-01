@@ -14,7 +14,17 @@ func NewRouter(modules ...RouterFunc) chi.Router {
 	router.Use(recoveryMiddleware)
 	router.Use(RateLimitMiddleware)
 	router.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{"https://localhost:*", "http://localhost:*", "https://theanuragmishra.github.io"},
+		AllowedOrigins: []string{
+			"http://localhost",
+			"http://localhost:*",
+			"https://localhost",
+			"https://localhost:*",
+			"http://127.0.0.1",
+			"http://127.0.0.1:*",
+			"https://127.0.0.1",
+			"https://127.0.0.1:*",
+			"https://theanuragmishra.github.io",
+		},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
 		ExposedHeaders:   []string{"Link"},
